@@ -1,0 +1,60 @@
+ext {
+    configuration = [
+            compile_sdk_version               : 28,
+            build_tools_version               :"27.0.3",
+            mini_sdk_version                  : 19,
+            target_sdk_version                : 28,
+            version_code                      : 1,
+            version_name                      : "1.0.1",
+            android_support_version           : "27.1.1",
+            retrofit2_version                 : "2.3.0",
+            replugin_version                  : "2.2.0",
+            butternife_version                : "8.8.1",
+            leakcanary                        : "1.5.4",
+            glide                             : "4.7.1"
+    ]
+
+    libraries = [
+            android_support_cardview          : "com.android.support:cardview-v7:${configuration.android_support_version}",
+            android_support_compat            : "com.android.support:appcompat-v7:${configuration.android_support_version}",
+            android_support_parent            : "com.android.support:percent:${configuration.android_support_version}",
+            android_support_design            : "com.android.support:design:${configuration.android_support_version}",
+            android_support_recyclerview      : "com.android.support:recyclerview-v7:${configuration.android_support_version}",
+            android_support_annotations       : "com.android.support:support-annotations:${configuration.android_support_version}",
+            android_support_constraint        : "com.android.support.constraint:constraint-layout:1.1.0",
+            retrofit2                         : "com.squareup.retrofit2:retrofit:${configuration.retrofit2_version}",
+            retrofit2_adapter_gson            : "com.squareup.retrofit2:converter-gson:${configuration.retrofit2_version}",
+            retrofit2_adapter_scalars         : "com.squareup.retrofit2:converter-scalars:${configuration.retrofit2_version}",
+            retrofit2_adapter_rxjava          : "com.squareup.retrofit2:adapter-rxjava2:${configuration.retrofit2_version}",
+            replugin_host                     : "com.qihoo360.replugin:replugin-host-lib:${configuration.replugin_version}",
+            replugin_plugin                   : "com.qihoo360.replugin:replugin-plugin-lib:${configuration.replugin_version}",
+            butternife                        : "com.jakewharton:butterknife:${configuration.butternife_version}",
+            butternife_complier               : "com.jakewharton:butterknife-compiler:${configuration.butternife_version}",
+            rxjava                            : "io.reactivex.rxjava2:rxjava:2.1.3",
+            rxandroid                         : "io.reactivex.rxjava2:rxandroid:2.0.0",
+            gson                              : "com.google.code.gson:gson:2.8.5",
+            okhttp_log                        : "com.squareup.okhttp3:logging-interceptor:3.6.0",
+            greendao                          : "org.greenrobot:greendao:3.2.2",
+            flex_layout                       : "com.google.android:flexbox:1.0.0",
+            constraint_layout                 : "com.android.support.constraint:constraint-layout:1.1.3",
+            timber                            : "com.jakewharton.timber:timber:4.7.0",
+            glide                             : "com.github.bumptech.glide:glide:${configuration.glide}",
+            glide_intergration                : "com.github.bumptech.glide:okhttp3-integration:${configuration.glide}",
+            glider_complier                   : "com.github.bumptech.glide:compiler:${configuration.glide}",
+            cookieJar                         : "com.github.franmontiel:PersistentCookieJar:v1.0.1",
+            immersionbar                         : "com.gyf.immersionbar:immersionbar:3.0.0-beta02"
+    ]
+
+    testingLibraries = [
+            junit                             : "junit:junit:4.12",
+            runner                            : "com.android.support.test:runner:1.0.2",
+            espresso                          : "com.android.support.test.espresso:espresso-core:3.0.2",
+            instrumentationRunner             : "android.support.test.runner.AndroidJUnitRunner"
+    ]
+
+    debugCompile = [
+            leakcanary                        : "com.squareup.leakcanary:leakcanary-android:${configuration.leakcanary}",
+            leakcanary_no_op                  : "com.squareup.leakcanary:leakcanary-android-no-op:${configuration.leakcanary}",
+            debug_db                          : "com.amitshekhar.android:debug-db:1.0.1"
+    ]
+}

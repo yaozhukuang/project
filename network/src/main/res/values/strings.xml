@@ -1,0 +1,11 @@
+<resources>
+    <string name="component_network_parse_error">解析服务器数据失败</string>
+    <string name="component_network_unknown_host_error">无法连接到服务器</string>
+    <string name="component_network_socket_timeout">连接超时</string>
+    <string name="component_network_socket_error">服务器错误</string>
+    <string name="component_network_io_error">服务器错误</string>
+    <string name="component_network_network_error">网络错误</string>
+    <string name="component_network_unknown_error">未知错误</string>
+    <string name="component_network_connect_error">连接服务器失败</string>
+    <string name="component_network_ssl_error">证书验证失败</string>
+</resources>

@@ -1,0 +1,41 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="custom_app_theme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/component_res_activity_animation_style</item>
+        <item name="android:dialogTheme">@style/default_dialog_style</item>
+    </style>
+
+    <!-- 例如当前在A界面，需要打开B页面-->
+    <style name="component_res_activity_animation_style" parent="@android:style/Animation">
+        <!-- 打开的activity进入动画，B的进入动画-->
+        <item name="android:activityOpenEnterAnimation">@anim/anim_enter_activity_in</item>
+        <!-- 退出的activity退出动画，A的退出动画-->
+        <item name="android:activityOpenExitAnimation">@anim/anim_close_activity_in</item>
+        <!-- 打开的activity退出动画，B的退出动画-->
+        <item name="android:activityCloseEnterAnimation">@anim/anim_enter_activity_out</item>
+        <!-- 退出的activity进入动画，A的进入动画-->
+        <item name="android:activityCloseExitAnimation">@anim/anim_close_activity_out</item>
+    </style>
+
+    <style name="default_dialog_style" parent="@android:style/Theme.Holo.Light.Dialog">
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+</resources>

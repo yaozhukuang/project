@@ -1,0 +1,5 @@
+<resources>
+    <string name="component_adapter_app_name">component_adapter</string>
+    <string name="component_adapter_load_failed">加载失败</string>
+    <string name="component_adapter_load_complete">全部加载完成</string>
+</resources>
