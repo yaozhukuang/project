@@ -18,6 +18,12 @@ public abstract class BaseFragment extends Fragment {
         rootView = inflater.inflate(getLayoutId(), container, false);
         return rootView;
     }
+    
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        rootView = null;
+    }
 
     /**
      * 获取布局文件ID
