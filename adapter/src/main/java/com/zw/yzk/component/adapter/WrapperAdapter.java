@@ -1,4 +1,4 @@
-package com.zw.yzk.component.adapter;
+package com.mi.component.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -7,15 +7,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.zw.yzk.component.adapter.load.DefaultLoadMoreView;
-import com.zw.yzk.component.adapter.load.LoadMoreListener;
-import com.zw.yzk.component.adapter.load.LoadMoreView;
-import com.zw.yzk.component.adapter.manager.EmptyViewManager;
-import com.zw.yzk.component.adapter.manager.FooterManager;
-import com.zw.yzk.component.adapter.manager.HeaderManager;
-import com.zw.yzk.component.adapter.manager.LoadMoreManager;
-import com.zw.yzk.component.adapter.refresh.RefreshListener;
-
+import com.mi.component.adapter.load.DefaultLoadMoreView;
+import com.mi.component.adapter.load.LoadMoreListener;
+import com.mi.component.adapter.load.LoadMoreView;
+import com.mi.component.adapter.manager.EmptyViewManager;
+import com.mi.component.adapter.manager.FooterManager;
+import com.mi.component.adapter.manager.HeaderManager;
+import com.mi.component.adapter.manager.LoadMoreManager;
+import com.mi.component.adapter.refresh.RefreshListener;
 
 
 /**
@@ -207,10 +206,11 @@ public class WrapperAdapter extends RecyclerView.Adapter {
 
     /**
      * 设置下拉刷新状态
+     *
      * @param refreshing true： 正在刷新， false：刷新完成
      */
     public void setRefreshing(boolean refreshing) {
-        if(refreshLayout == null) {
+        if (refreshLayout == null) {
             return;
         }
         refreshLayout.setRefreshing(refreshing);
@@ -221,13 +221,15 @@ public class WrapperAdapter extends RecyclerView.Adapter {
      * 加载成功
      */
     public void loadSucceed() {
-        recyclerView.getRecycledViewPool().getRecycledView(AdapterConstant.STATE_LOADING);
+        recyclerView.getRecycledViewPool().getRecycledView(AdapterConstant.VIEW_TYPE_FOOTER);
         setLoadViewState(AdapterConstant.STATE_DEFAULT);
-        //判断如果加载完成之后不满一屏，即正在加载的View还在展示那么继续回调加载更多
-        if (recyclerView.getChildAt(recyclerView.getChildCount() - 1)
-                == loadMoreManager.getLoadMoreView().getLoadingView()) {
-            loading();
-        }
+        //需要考虑到recyclerview item动画时间
+        recyclerView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                checkIfNeedLoading();
+            }
+        }, recyclerView.getItemAnimator().getChangeDuration());
     }
 
     /**
@@ -402,7 +404,8 @@ public class WrapperAdapter extends RecyclerView.Adapter {
      * 正在加载
      */
     private void loading() {
-        if (loadMoreManager.getLoadState() != AdapterConstant.STATE_LOAD_ALL) {
+        if (loadMoreManager.getLoadState() != AdapterConstant.STATE_LOAD_ALL
+                && loadMoreManager.getLoadState() != AdapterConstant.STATE_LOADING) {
             loadMoreManager.setLoadState(AdapterConstant.STATE_LOADING);
             loadMoreManager.getLoadMoreView().loading();
             recyclerView.post(new Runnable() {
@@ -448,6 +451,24 @@ public class WrapperAdapter extends RecyclerView.Adapter {
             default:
                 break;
         }
+    }
+
+    //检查列表更新后师傅需要继续加载更多
+    private void checkIfNeedLoading() {
+        //判断如果加载完成之后不满一屏，即正在加载的View还在展示那么继续回调加载更多
+        if(loadMoreManager.getLoadState() != AdapterConstant.STATE_DEFAULT) {
+            return;
+        }
+        recyclerView.post(new Runnable() {
+            @Override
+            public void run() {
+                if (recyclerView.getChildAt(recyclerView.getChildCount() - 1)
+                        == loadMoreManager.getLoadMoreView().getLoadingView()) {
+                    loading();
+                }
+            }
+        });
+
     }
 
 
