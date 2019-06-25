@@ -223,6 +223,11 @@ public class WrapperAdapter extends RecyclerView.Adapter {
     public void loadSucceed() {
         recyclerView.getRecycledViewPool().getRecycledView(AdapterConstant.STATE_LOADING);
         setLoadViewState(AdapterConstant.STATE_DEFAULT);
+        //判断如果加载完成之后不满一屏，即正在加载的View还在展示那么继续回调加载更多
+        if (recyclerView.getChildAt(recyclerView.getChildCount() - 1)
+                == loadMoreManager.getLoadMoreView().getLoadingView()) {
+            loading();
+        }
     }
 
     /**
