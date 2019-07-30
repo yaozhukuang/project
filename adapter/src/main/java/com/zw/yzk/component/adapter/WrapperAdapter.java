@@ -104,8 +104,21 @@ public class WrapperAdapter extends RecyclerView.Adapter {
         } else if (position == getItemCount() - loadMoreManager.getLoadMoreCount() && loadMoreManager.isLoadMoreEnable()) {
             return AdapterConstant.VIEW_TYPE_LOADING;
         } else {
-            return AdapterConstant.VIEW_TYPE_ITEM;
+            return adapter.getItemViewType(position);
         }
+    }
+    
+    /**
+     * 判断item是否是adapter里面的普通item
+     * @param position
+     * @return
+     */
+    public boolean isNormalItem(int position) {
+        int type = getItemViewType(position);
+        return type != AdapterConstant.VIEW_TYPE_HEADER
+                && type != AdapterConstant.VIEW_TYPE_EMPTY
+                && type != AdapterConstant.VIEW_TYPE_FOOTER
+                && type != AdapterConstant.VIEW_TYPE_LOADING;
     }
 
     /**
