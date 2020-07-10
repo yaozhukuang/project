@@ -1,4 +1,4 @@
-package com.mi.component.adapter;
+package com.zw.yzk.component.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -7,14 +7,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mi.component.adapter.load.DefaultLoadMoreView;
-import com.mi.component.adapter.load.LoadMoreListener;
-import com.mi.component.adapter.load.LoadMoreView;
-import com.mi.component.adapter.manager.EmptyViewManager;
-import com.mi.component.adapter.manager.FooterManager;
-import com.mi.component.adapter.manager.HeaderManager;
-import com.mi.component.adapter.manager.LoadMoreManager;
-import com.mi.component.adapter.refresh.RefreshListener;
+import com.zw.yzk.component.adapter.load.DefaultLoadMoreView;
+import com.zw.yzk.component.adapter.load.LoadMoreListener;
+import com.zw.yzk.component.adapter.load.LoadMoreView;
+import com.zw.yzk.component.adapter.manager.EmptyViewManager;
+import com.zw.yzk.component.adapter.manager.FooterManager;
+import com.zw.yzk.component.adapter.manager.HeaderManager;
+import com.zw.yzk.component.adapter.manager.LoadMoreManager;
+import com.zw.yzk.component.adapter.refresh.RefreshListener;
 
 
 /**
